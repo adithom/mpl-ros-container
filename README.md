@@ -16,10 +16,15 @@ Paper: [Search-based Motion Planning for Aggressive Flight in SE(3)](https://arx
 ### Clone the Repository
 
 ```
-git clone --recursive https://github.com/adithom/mpl_ros_project.git
+git clone --recursive https://github.com/adithom/mpl_ros_container.git
 ```
 ### Build Docker Image
 ```
 docker build -t mpl_ros_image .
 ```
+
+```
+docker run -it --rm -e DISPLAY=host.docker.internal:0.0 --add-host=host.docker.internal:host-gateway mpl_ros_image
+```
+
 

@@ -1,5 +1,7 @@
 FROM ros:noetic-ros-core-focal
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install -y git
 RUN apt update && apt install -y wget
 RUN apt-get install -y libopencv-dev
@@ -11,18 +13,21 @@ RUN apt-get update
 
 RUN apt-get install -y python3-catkin-tools
 
-RUN apt-get install -y \
-    python3-pip \
-    ros-noetic-rviz \
-    ros-noetic-pcl-ros \
-    libsdl1.2-dev \
-    libsdl-image1.2-dev
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        python3-pip \
+        ros-noetic-rviz \
+        ros-noetic-pcl-ros \
+        libsdl1.2-dev \
+        libsdl-image1.2-dev && \
+    rm -rf /var/lib/apt/lists/*
+
 
 RUN apt-get update && apt-get install -y python3-rosdep
 RUN rosdep init && rosdep update
 
 # Create a catkin workspace
-ENV CATKIN_WS = /root/catkin_ws
+ENV CATKIN_WS=/root/catkin_ws
 RUN mkdir -p $CATKIN_WS/src
 
 COPY mpl_ros $CATKIN_WS/src/mpl_ros
@@ -38,9 +43,6 @@ RUN rosdep update && \
 RUN /bin/bash -c "source /opt/ros/noetic/setup.bash && \
     catkin config -DCMAKE_BUILD_TYPE=Release && \
     catkin build"
-
-# Source the workspace on container start
-RUN echo "source /opt/ros/noetic/setup.bash && source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
 
 # Source the workspace on container start
 RUN echo "source /opt/ros/noetic/setup.bash && source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
