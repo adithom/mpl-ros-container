@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y python3-rosdep
 RUN rosdep init && rosdep update
 
 # Create a catkin workspace
-ENV CATKIN_WS /root/catkin_ws
+ENV CATKIN_WS = /root/catkin_ws
 RUN mkdir -p $CATKIN_WS/src
 
 COPY mpl_ros $CATKIN_WS/src/mpl_ros
