@@ -2,6 +2,7 @@ FROM ros:noetic-ros-core-focal
 
 RUN apt-get update && apt-get install -y git
 RUN apt update && apt install -y wget
+RUN apt-get install -y libopencv-dev
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" \
     > /etc/apt/sources.list.d/ros-latest.list' && \
@@ -17,6 +18,9 @@ RUN apt-get install -y \
     libsdl1.2-dev \
     libsdl-image1.2-dev
 
+RUN apt-get update && apt-get install -y python3-rosdep
+RUN rosdep init && rosdep update
+
 # Create a catkin workspace
 ENV CATKIN_WS /root/catkin_ws
 RUN mkdir -p $CATKIN_WS/src
@@ -24,6 +28,8 @@ RUN mkdir -p $CATKIN_WS/src
 COPY mpl_ros $CATKIN_WS/src/mpl_ros
 
 WORKDIR $CATKIN_WS
+
+RUN git clone https://github.com/catkin/catkin_simple.git src/catkin_simple
 
 RUN rosdep update && \
     rosdep install --from-paths src --ignore-src -r -y
