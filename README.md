@@ -8,6 +8,8 @@ Paper: [Search-based Motion Planning for Aggressive Flight in SE(3)](https://arx
 
 ## Setup Instructions
 
+Compiled package is available with this repo if you want to directly use it.
+
 ### Prerequisites
 
 - Docker installed on your system
