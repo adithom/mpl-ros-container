@@ -86,7 +86,7 @@ RUN git clone https://github.com/PointCloudLibrary/pcl.git /opt/pcl-src && \
 RUN /bin/bash -c "source /opt/ros/melodic/setup.bash && \
     catkin config --extend /opt/ros/melodic --cmake-args -DCMAKE_BUILD_TYPE=Release && \
     catkin clean -y && \
-    catkin build -j$(nproc) --verbose"
+    catkin build -j1 --verbose"
 
 RUN echo 'source /opt/ros/melodic/setup.bash' >> /root/.bashrc && \
     echo 'source /root/catkin_ws/devel/setup.bash' >> /root/.bashrc
