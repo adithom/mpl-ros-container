@@ -1,6 +1,6 @@
 # MPL ROS Wrapper
 
-This project containerizes the MPL ROS package for planning trajectories calculated using a search-based planner for quadrotors flying in an obstacle-cluttered environments. MPL uses the results of lower dimensional search of the environments as heuristics for hierarchical planning. 
+This project containerizes the MPL ROS package for planning trajectories calculated using a search-based planner for quadrotors flying in an obstacle-cluttered environments. MPL uses the results of lower dimensional search of the environments as heuristics for hierarchical planning. Dockerfile currently setup with ROS Melodic for ARM based processors.
 
 Credits: Heavily reliant on Motion Primitive Library developed by [Sikang Liu](https://github.com/sikang)
 
@@ -11,7 +11,7 @@ Paper: [Search-based Motion Planning for Aggressive Flight in SE(3)](https://arx
 ### Prerequisites
 
 - Docker installed on your system
-- Windows X server for display forwarding on Windows OS (I used VcXsrv)
+- Windows X server for display forwarding (I used VcXsrv or xQuartz for MacOS)
 
 ### Clone the Repository with submodule
 
