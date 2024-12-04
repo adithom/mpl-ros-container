@@ -30,6 +30,7 @@ docker run -it --rm  -v /home/user/maps:/root/maps -v /home/user/output:/root/ou
 ```
 
 ```
+roscore &
 cd ./src/mpl_ros/mpl_test_node/scripts
 chmod +x stl_to_traj.sh
 ./stl_to_traj.sh
