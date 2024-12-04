@@ -13,6 +13,7 @@ RUN apt-get update && \
         python-pip \
         ros-kinetic-rviz \
         ros-kinetic-pcl-ros \
+        ros-kinetic-tf-conversions \
         libsdl1.2-dev \
         libsdl-image1.2-dev \
         python-rosdep \
@@ -26,6 +27,7 @@ RUN apt-get update && \
         libglu1-mesa \
         libegl1-mesa && \
     rm -rf /var/lib/apt/lists/*
+
 
 RUN if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then \
         rosdep init; \
@@ -47,6 +49,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash && \
+    cd $CATKIN_WS && \
+    catkin init && \
     catkin config -DCMAKE_BUILD_TYPE=Release && \
     catkin build -j$(nproc)"
 
