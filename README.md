@@ -24,9 +24,17 @@ git clone --recursive https://github.com/adithom/mpl_ros_container.git
 ```
 docker build -t mpl_ros_image .
 ```
+The maps directory should contain the STL files and the start and end points in a CSV (reference stl_to_traj.sh)
+```
+docker run -it --rm  -v /home/user/maps:/root/maps -v /home/user/output:/root/output mpl_ros_image
+```
 
 ```
-docker run -it --rm -e DISPLAY=host.docker.internal:0.0 --add-host=host.docker.internal:host-gateway mpl_ros_image
+cd ./src/mpl_ros/mpl_test_node/scripts
+chmod +x stl_to_traj.sh
+./stl_to_traj.sh
 ```
+
+
 
 
