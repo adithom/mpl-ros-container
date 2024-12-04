@@ -1,3 +1,4 @@
 [submodule "mpl_ros"]
 	path = mpl_ros
 	url = https://github.com/adithom/mpl_ros.git
+	branch = master
