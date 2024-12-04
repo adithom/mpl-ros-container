@@ -1,6 +1,6 @@
 # MPL ROS Wrapper
 
-This project containerizes the MPL ROS package for planning trajectories calculated using a search-based planner for quadrotors flying in an obstacle-cluttered environments. MPL uses the results of lower dimensional search of the environments as heuristics for hierarchical planning. 
+This project containerizes the MPL ROS package for planning trajectories calculated using a search-based planner for quadrotors flying in an obstacle-cluttered environments. MPL uses the results of lower dimensional search of the environments as heuristics for hierarchical planning. Melodic port is not currently working.
 
 Credits: Heavily reliant on Motion Primitive Library developed by [Sikang Liu](https://github.com/sikang)
 
