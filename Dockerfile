@@ -37,7 +37,7 @@ RUN if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then \
 ENV CATKIN_WS=/root/catkin_ws
 RUN mkdir -p $CATKIN_WS/src
 
-COPY mpl_ros $CATKIN_WS/src/mpl_ros
+RUN git clone https://github.com/adithom/mpl_ros.git $CATKIN_WS/src/mpl_ros
 
 WORKDIR $CATKIN_WS
 
@@ -52,7 +52,7 @@ RUN /bin/bash -c "source /opt/ros/kinetic/setup.bash && \
     cd $CATKIN_WS && \
     catkin init && \
     catkin config -DCMAKE_BUILD_TYPE=Release && \
-    catkin build -j$(nproc)"
+    catkin build -j1"
 
 RUN echo "source /opt/ros/kinetic/setup.bash && source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
 
